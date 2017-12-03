@@ -1,13 +1,14 @@
 package com.hypnoweb.hypnowebapp;
 
+import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
-import com.hypnoweb.hypnowebapp.DI.AppDi;
-import com.hypnoweb.hypnowebapp.DI.Components.DaggerAppComponent;
-import com.hypnoweb.hypnowebapp.DI.Modules.AppModule;
+
+import com.hypnoweb.hypnowebapp.DI.HypnoWebApplication;
+import com.hypnoweb.hypnowebapp.databinding.ActivityMainBinding;
+import com.hypnoweb.hypnowebapp.splashscreen.SplashViewModel;
 
 import javax.inject.Inject;
 
@@ -15,18 +16,16 @@ import javax.inject.Inject;
  * Created by stefan on 12/3/2017.
  */
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class SplashScreenActivity extends Activity {
 
     @Inject
-    AppModule appModule;
+    SplashViewModel splashViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
-                .build();
-
+        ((HypnoWebApplication) getApplication()).getAppComponent().inject(this);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setViewModel(splashViewModel);
     }
 }

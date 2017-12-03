@@ -10,11 +10,11 @@ import com.hypnoweb.hypnowebapp.DI.Modules.AppModule;
  * Created by stefan on 12/3/2017.
  */
 
-public class AppDi extends Application{
+public class HypnoWebApplication extends Application {
 
-    private static AppComponent appComponent;
+    private AppComponent appComponent;
 
-    public static AppComponent getAppComponent(){
+    public AppComponent getAppComponent() {
         return appComponent;
     }
 
@@ -24,9 +24,9 @@ public class AppDi extends Application{
         appComponent = buildComponent();
     }
 
-    private AppComponent buildComponent() {
+    protected AppComponent buildComponent() {
         return DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
+                .appModule(new AppModule(HypnoWebApplication.this))
                 .build();
     }
 }

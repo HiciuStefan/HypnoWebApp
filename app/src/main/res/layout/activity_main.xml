@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.hypnoweb.hypnowebapp.SplashScreenActivity"
-    android:background="@color/colorPrimary">
 
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:srcCompat="@drawable/timeless_hypnoweb"/>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v4.widget.ContentLoadingProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <data>
 
-</RelativeLayout>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.hypnoweb.hypnowebapp.splashscreen.SplashViewModel" />
+    </data>
+
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/splashScreenImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/timeless_hypnoweb" />
+
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:layout_width="200dp"
+            android:layout_height="20dp"
+            style="?android:attr/android:progressBarStyleHorizontal"
+            android:layout_below="@+id/splashScreenImage"
+            android:layout_centerInParent="true"
+            app:loading="@{viewModel.loading}" />
+
+    </RelativeLayout>
+</layout>

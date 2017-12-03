@@ -17,7 +17,6 @@ public class AppModule {
 
     private Context context;
 
-    @Inject
     public AppModule(Context context) {
         this.context = context;
     }
