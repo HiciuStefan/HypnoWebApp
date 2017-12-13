@@ -1,10 +1,12 @@
-package com.hypnoweb.hypnowebapp.DI;
+package com.hypnoweb.hypnowebapp.di;
 
 import android.app.Application;
 
-import com.hypnoweb.hypnowebapp.DI.Components.AppComponent;
-import com.hypnoweb.hypnowebapp.DI.Components.DaggerAppComponent;
-import com.hypnoweb.hypnowebapp.DI.Modules.AppModule;
+import com.hypnoweb.hypnowebapp.di.Components.AppComponent;
+import com.hypnoweb.hypnowebapp.di.Components.DaggerAppComponent;
+import com.hypnoweb.hypnowebapp.di.modules.AppModule;
+import com.hypnoweb.hypnowebapp.di.modules.DatabaseModule;
+import com.hypnoweb.hypnowebapp.di.modules.NetworkModule;
 
 /**
  * Created by stefan on 12/3/2017.
@@ -27,6 +29,8 @@ public class HypnoWebApplication extends Application {
     protected AppComponent buildComponent() {
         return DaggerAppComponent.builder()
                 .appModule(new AppModule(HypnoWebApplication.this))
+                .networkModule(new NetworkModule())
+                .databaseModule(new DatabaseModule())
                 .build();
     }
 }

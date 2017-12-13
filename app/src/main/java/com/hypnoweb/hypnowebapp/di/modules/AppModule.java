@@ -1,8 +1,7 @@
-package com.hypnoweb.hypnowebapp.DI.Modules;
+package com.hypnoweb.hypnowebapp.di.modules;
 
 import android.content.Context;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;
