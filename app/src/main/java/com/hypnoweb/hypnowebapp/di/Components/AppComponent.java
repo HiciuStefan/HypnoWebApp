@@ -13,6 +13,8 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
+import dagger.android.AndroidInjector;
+import dagger.android.DaggerApplication;
 
 /**
  * Created by stefan on 12/3/2017.
@@ -20,15 +22,16 @@ import dagger.android.AndroidInjectionModule;
 
 @Component(modules = {AndroidInjectionModule.class, AppModule.class, NetworkModule.class, DatabaseModule.class, ActivityModule.class})
 @Singleton
-public interface AppComponent {
+public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
     @Component.Builder
     interface Builder {
         @BindsInstance
         Builder application(Application application);
-
         AppComponent build();
     }
 
+    @Override
+    void inject(DaggerApplication application);
     void inject(HypnoWebApplication hypnoWebApplication);
 }

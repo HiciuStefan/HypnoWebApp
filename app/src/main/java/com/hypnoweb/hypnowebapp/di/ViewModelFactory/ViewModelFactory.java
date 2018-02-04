@@ -14,12 +14,12 @@ import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 
-public class ProjectViewModelFactory implements ViewModelProvider.Factory {
+public class ViewModelFactory implements ViewModelProvider.Factory {
 
     private final ArrayMap<Class, Callable<? extends ViewModel>> creators;
 
     @Inject
-    public ProjectViewModelFactory(ViewModelSubComponent viewModelSubComponent) {
+    public ViewModelFactory(ViewModelSubComponent viewModelSubComponent) {
         creators = new ArrayMap<>();
         creators.put(SplashViewModel.class, () -> viewModelSubComponent.splashViewModel());
     }

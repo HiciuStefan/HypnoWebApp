@@ -3,21 +3,13 @@ package com.hypnoweb.hypnowebapp.splashscreen;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 
 import com.hypnoweb.hypnowebapp.R;
 
-import javax.inject.Inject;
+import dagger.android.support.DaggerAppCompatActivity;
 
-import dagger.android.AndroidInjector;
-import dagger.android.DispatchingAndroidInjector;
-import dagger.android.support.HasSupportFragmentInjector;
+public class SplashScreenActivity extends DaggerAppCompatActivity {
 
-public class SplashScreenActivity extends FragmentActivity implements HasSupportFragmentInjector {
-
-    @Inject
-    DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,8 +32,4 @@ public class SplashScreenActivity extends FragmentActivity implements HasSupport
 
     }
 
-    @Override
-    public AndroidInjector<Fragment> supportFragmentInjector() {
-        return dispatchingAndroidInjector;
-    }
 }

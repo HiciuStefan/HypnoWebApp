@@ -6,19 +6,19 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.hypnoweb.hypnowebapp.R;
 import com.hypnoweb.hypnowebapp.databinding.SplashscreenfragmentBinding;
-import com.hypnoweb.hypnowebapp.di.interfaces.Injectable;
 
 import javax.inject.Inject;
 
+import dagger.android.support.DaggerFragment;
 
-public class SplashScreenFragment extends Fragment implements Injectable {
+
+public class SplashScreenFragment extends DaggerFragment {
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;

@@ -2,7 +2,7 @@ package com.hypnoweb.hypnowebapp.di.modules;
 
 import android.arch.lifecycle.ViewModelProvider;
 
-import com.hypnoweb.hypnowebapp.di.ViewModelFactory.ProjectViewModelFactory;
+import com.hypnoweb.hypnowebapp.di.ViewModelFactory.ViewModelFactory;
 import com.hypnoweb.hypnowebapp.di.subcomponents.ViewModelSubComponent;
 
 import javax.inject.Singleton;
@@ -17,6 +17,6 @@ public class AppModule {
     @Singleton
     @Provides
     ViewModelProvider.Factory provideViewModelFactory(ViewModelSubComponent.Builder viewModelSubComponent) {
-        return new ProjectViewModelFactory(viewModelSubComponent.build());
+        return new ViewModelFactory(viewModelSubComponent.build());
     }
 }
