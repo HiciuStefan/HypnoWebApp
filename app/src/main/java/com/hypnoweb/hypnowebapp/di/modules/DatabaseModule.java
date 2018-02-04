@@ -1,7 +1,7 @@
 package com.hypnoweb.hypnowebapp.di.modules;
 
+import android.app.Application;
 import android.arch.persistence.room.Room;
-import android.content.Context;
 
 import com.hypnoweb.hypnowebapp.database.AppDatabase;
 import com.hypnoweb.hypnowebapp.database.movie.MoviesDao;
@@ -23,7 +23,7 @@ public class DatabaseModule {
 
     @Provides
     @Singleton
-    public AppDatabase getDataBase(Context context) {
+    public AppDatabase getDataBase(Application context) {
         return Room.databaseBuilder(context, AppDatabase.class, "HypnoWebDataBase").build();
     }
 

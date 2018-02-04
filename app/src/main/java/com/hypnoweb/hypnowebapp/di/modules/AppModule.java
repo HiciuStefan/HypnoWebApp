@@ -1,29 +1,22 @@
 package com.hypnoweb.hypnowebapp.di.modules;
 
-import android.content.Context;
+import android.arch.lifecycle.ViewModelProvider;
+
+import com.hypnoweb.hypnowebapp.di.ViewModelFactory.ProjectViewModelFactory;
+import com.hypnoweb.hypnowebapp.di.subcomponents.ViewModelSubComponent;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by stefan on 12/3/2017.
- */
 
-@Module
+@Module(subcomponents = ViewModelSubComponent.class)
 public class AppModule {
 
-    private Context context;
-
-    public AppModule(Context context) {
-        this.context = context;
-    }
-
-
-    @Provides
     @Singleton
-    Context provideContext() {
-        return context;
+    @Provides
+    ViewModelProvider.Factory provideViewModelFactory(ViewModelSubComponent.Builder viewModelSubComponent) {
+        return new ProjectViewModelFactory(viewModelSubComponent.build());
     }
 }

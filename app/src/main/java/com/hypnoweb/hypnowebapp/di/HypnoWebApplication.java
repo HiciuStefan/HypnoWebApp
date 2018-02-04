@@ -1,36 +1,30 @@
 package com.hypnoweb.hypnowebapp.di;
 
+import android.app.Activity;
 import android.app.Application;
 
-import com.hypnoweb.hypnowebapp.di.Components.AppComponent;
-import com.hypnoweb.hypnowebapp.di.Components.DaggerAppComponent;
-import com.hypnoweb.hypnowebapp.di.modules.AppModule;
-import com.hypnoweb.hypnowebapp.di.modules.DatabaseModule;
-import com.hypnoweb.hypnowebapp.di.modules.NetworkModule;
+import javax.inject.Inject;
+
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
 
 /**
  * Created by stefan on 12/3/2017.
  */
 
-public class HypnoWebApplication extends Application {
+public class HypnoWebApplication extends Application implements HasActivityInjector {
 
-    private AppComponent appComponent;
-
-    public AppComponent getAppComponent() {
-        return appComponent;
-    }
+    @Inject
+    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        appComponent = buildComponent();
+        AppInjector.init(this);
     }
 
-    protected AppComponent buildComponent() {
-        return DaggerAppComponent.builder()
-                .appModule(new AppModule(HypnoWebApplication.this))
-                .networkModule(new NetworkModule())
-                .databaseModule(new DatabaseModule())
-                .build();
+    @Override
+    public DispatchingAndroidInjector<Activity> activityInjector() {
+        return dispatchingAndroidInjector;
     }
 }
