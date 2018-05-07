@@ -8,7 +8,8 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 
-class SplashViewModel @Inject constructor(private val catalogRepository: CatalogRepository) : ViewModel() {
+class SplashViewModel @Inject constructor(private val catalogRepository: CatalogRepository,
+                                          private val navigator: Navigator) : ViewModel() {
 
     var loading = ObservableBoolean()
 
