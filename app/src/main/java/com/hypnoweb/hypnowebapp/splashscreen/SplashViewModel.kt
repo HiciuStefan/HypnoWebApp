@@ -11,23 +11,30 @@ import javax.inject.Inject
 class SplashViewModel @Inject constructor(private val catalogRepository: CatalogRepository,
                                           private val navigator: Navigator) : ViewModel() {
 
+    val bag: CompositeDisposable
     var loading = ObservableBoolean()
 
-
     init {
+        bag = CompositeDisposable()
         loading.set(true)
     }
 
-
-    fun addSubscriptions(compositeDisposable: CompositeDisposable) {
-        catalogRepository.getCatalog()
+    fun addSubscriptions() {
+        bag.add(catalogRepository.catalog
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                        { loading.set(false) },
-                        { throwable -> Timber.e(throwable) })
+                        { catalog ->
+                            loading.set(false)
+                            catalog.movies
+
+                        },
+                        { throwable -> Timber.e(throwable) }
+                )
+        )
     }
 
     override fun onCleared() {
         super.onCleared()
+        bag.dispose()
     }
 }

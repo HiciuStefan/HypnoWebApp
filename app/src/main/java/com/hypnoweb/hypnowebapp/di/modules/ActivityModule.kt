@@ -13,5 +13,4 @@ abstract class ActivityModule {
     @ActivityKey(SplashScreenActivity::class)
     internal abstract fun contributeSplashActivity(): SplashScreenActivity
 
-
 }

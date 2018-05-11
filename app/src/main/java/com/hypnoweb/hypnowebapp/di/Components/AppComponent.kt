@@ -1,11 +1,8 @@
-package com.hypnoweb.hypnowebapp.di.Components
+package com.hypnoweb.hypnowebapp.di.components
 
 import android.app.Application
 import com.hypnoweb.hypnowebapp.di.HypnoWebApplication
-import com.hypnoweb.hypnowebapp.di.modules.ActivityModule
-import com.hypnoweb.hypnowebapp.di.modules.DatabaseModule
-import com.hypnoweb.hypnowebapp.di.modules.NetworkModule
-import com.hypnoweb.hypnowebapp.di.modules.ViewModelModule
+import com.hypnoweb.hypnowebapp.di.modules.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -16,6 +13,7 @@ import javax.inject.Singleton
 
 @Component(modules = [
 AndroidSupportInjectionModule::class,
+AppModule::class,
 ViewModelModule::class,
 NetworkModule::class,
 DatabaseModule::class,
@@ -35,4 +33,5 @@ interface AppComponent : AndroidInjector<DaggerApplication> {
 
     override fun inject(application: DaggerApplication?)
     fun inject(hypnoWebApplication: HypnoWebApplication)
+
 }

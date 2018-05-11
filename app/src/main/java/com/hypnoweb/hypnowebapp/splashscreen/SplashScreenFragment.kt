@@ -27,6 +27,7 @@ class SplashScreenFragment : DaggerFragment() {
                 .get(SplashViewModel::class.java)
         val binding = DataBindingUtil.bind<SplashscreenfragmentBinding>(view!!)
         binding!!.viewModel = viewModel
+        viewModel.addSubscriptions()
 
     }
 

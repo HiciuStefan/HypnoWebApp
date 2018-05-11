@@ -5,4 +5,7 @@ import javax.inject.Inject
 
 class Navigator @Inject constructor(val context: Context) {
 
+    init {
+
+    }
 }
