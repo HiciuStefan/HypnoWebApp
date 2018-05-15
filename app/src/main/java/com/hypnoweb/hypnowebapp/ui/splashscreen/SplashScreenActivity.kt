@@ -1,7 +1,8 @@
-package com.hypnoweb.hypnowebapp.splashscreen
+package com.hypnoweb.hypnowebapp.ui.splashscreen
 
 import android.os.Bundle
 import com.hypnoweb.hypnowebapp.R
+import com.hypnoweb.hypnowebapp.ui.splashscreen.SplashScreenFragment
 import dagger.android.support.DaggerAppCompatActivity
 
 class SplashScreenActivity : DaggerAppCompatActivity() {
@@ -10,6 +11,5 @@ class SplashScreenActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         this.supportFragmentManager.beginTransaction().replace(R.id.container, SplashScreenFragment.getInstance()).commit()
-
     }
 }

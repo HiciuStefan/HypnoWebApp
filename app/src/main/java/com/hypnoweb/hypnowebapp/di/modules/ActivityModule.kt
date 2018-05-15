@@ -1,16 +1,18 @@
 package com.hypnoweb.hypnowebapp.di.modules
 
-import com.hypnoweb.hypnowebapp.splashscreen.SplashScreenActivity
+import com.hypnoweb.hypnowebapp.ui.catalog.CatalogActivity
+import com.hypnoweb.hypnowebapp.ui.splashscreen.SplashScreenActivity
 import dagger.Module
-import dagger.android.ActivityKey
 import dagger.android.ContributesAndroidInjector
 
 
 @Module
 abstract class ActivityModule {
 
-    @ContributesAndroidInjector(modules = [FragmentBuilderModule::class])
-    @ActivityKey(SplashScreenActivity::class)
-    internal abstract fun contributeSplashActivity(): SplashScreenActivity
+    @ContributesAndroidInjector(modules = arrayOf(FragmentBuilderModule::class))
+    abstract fun provideSplashScreenActivity(): SplashScreenActivity
+
+    @ContributesAndroidInjector(modules = arrayOf())
+    abstract fun provideCatalogActivity(): CatalogActivity
 
 }

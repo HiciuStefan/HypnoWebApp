@@ -1,8 +1,8 @@
 package com.hypnoweb.hypnowebapp.di
 
-import com.hypnoweb.hypnowebapp.di.Components.DaggerAppComponent
+import com.hypnoweb.hypnowebapp.di.components.DaggerAppComponent
 import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import dagger.android.support.DaggerApplication
 
 
 class HypnoWebApplication : DaggerApplication() {

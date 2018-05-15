@@ -1,4 +1,4 @@
-package com.hypnoweb.hypnowebapp.splashscreen
+package com.hypnoweb.hypnowebapp.ui.splashscreen
 
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.hypnoweb.hypnowebapp.R
 import com.hypnoweb.hypnowebapp.databinding.SplashscreenfragmentBinding
 import com.hypnoweb.hypnowebapp.di.ViewModelFactory.ViewModelFactory
+import com.hypnoweb.hypnowebapp.splashscreen.SplashViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
